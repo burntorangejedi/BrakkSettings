@@ -1,0 +1,42 @@
+Goes inside the "CustomCategories" section of the JSON
+================================================================
+
+["Knowledge"] = {
+    ["items"] = {
+        224264, -- Deepgrove Petal (Herbalism)
+        225235, -- Deepstone Crucible (Mining)
+        210175, -- Hardened Scrap (Engineering)
+        210176, -- Enchanted Scrap (Enchanting)
+        210177, -- Runed Scrap (Inscription)
+        210178, -- Etched Scrap (Jewelcrafting)
+        210179, -- Tempered Scrap (Blacksmithing)
+        210180, -- Tanned Scrap (Leatherworking)
+        210181, -- Stitched Scrap (Tailoring)
+        210182, -- Alchemical Residue (Alchemy)
+
+        -- Treatises (weekly knowledge items)
+        210183, -- Artisan's Treatise: Alchemy
+        210184, -- Artisan's Treatise: Blacksmithing
+        210185, -- Artisan's Treatise: Enchanting
+        210186, -- Artisan's Treatise: Engineering
+        210187, -- Artisan's Treatise: Inscription
+        210188, -- Artisan's Treatise: Jewelcrafting
+        210189, -- Artisan's Treatise: Leatherworking
+        210190, -- Artisan's Treatise: Tailoring
+        210191, -- Artisan's Treatise: Herbalism
+        210192, -- Artisan's Treatise: Mining
+        210193, -- Artisan's Treatise: Skinning
+        210194, -- Artisan's Treatise: Cooking
+        210195, -- Artisan's Treatise: Fishing
+        210196, -- Artisan's Treatise: Salvaging
+        210197, -- Artisan's Treatise: Surveying
+        210198, -- Artisan's Treatise: Dreambinding
+        210199, -- Artisan's Treatise: Beast Mastery
+        210200, -- Artisan's Treatise: Cartography
+        210201, -- Artisan's Treatise: Rune Carving
+        210202, -- Artisan's Treatise: Scribing
+        210203, -- Artisan's Treatise: Tinkering
+        210204, -- Artisan's Treatise: Wayfinding
+        210205, -- Artisan's Treatise: Woodworking
+    },
+},
