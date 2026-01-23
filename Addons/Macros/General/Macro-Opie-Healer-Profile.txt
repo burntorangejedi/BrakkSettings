@@ -1,0 +1,2 @@
+/run EditModeManagerFrame:SelectLayout("Laptop-ToxiUI-Horiz-Cell")
+/ec profile ToxiUI-Horiz-Cell
