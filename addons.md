@@ -55,6 +55,7 @@
 | OPie | [Download](https://www.curseforge.com/wow/addons/opie) |
 | Plumber | [Download](https://www.curseforge.com/wow/addons/plumber) |
 | Profession Shopping List | [Download](https://www.curseforge.com/wow/addons/profession-shopping-list) |
+| Sensei Class Resource Bar | [Download](https://www.curseforge.com/wow/addons/senseiclassresourcebar) |
 | SharedMedia | [Download](https://www.curseforge.com/wow/addons/sharedmedia) |
 | Simple Addon Manager | [Download](https://www.curseforge.com/wow/addons/simple-addon-manager) |
 | Simulationcraft | [Download](https://www.curseforge.com/wow/addons/simulationcraft) |

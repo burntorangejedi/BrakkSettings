@@ -28,7 +28,6 @@ Saved profiles and configurations for various World of Warcraft addons. Each sub
 - Edit Mode - UI layout presets (multiple profiles for different setups)
 - EnhanceQOL - Quality of life settings
 - Foe's Catchy Cast Bar - Cast bar styling
-- NephUI - UI layout configurations
 - OmniCD - Cooldown tracking
 - Opie - Radial menu bindings
 - Plater - Nameplate customization
