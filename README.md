@@ -32,7 +32,7 @@ Saved profiles and configurations for various World of Warcraft addons. Each sub
 - Opie - Radial menu bindings
 - Plater - Nameplate customization
 - Platynator - Nameplate styling
-- Sensei - Resource bar configurations
+- Sensei Class Resource Bar - Resource bar configurations
 - TipTac - Tooltip customization
 
 ### 🐍 **Scripts/** - Development & Automation Tools
