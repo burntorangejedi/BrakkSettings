@@ -72,3 +72,37 @@ This repository is kept in sync with the character configuration from World of W
 ---
 
 For detailed information about specific addons and their purposes, refer to [addons.md](addons.md).
+
+## Addons Summary Generator
+
+- Purpose: Generate Addons.md by reading your WoW AddOns directory and optional AddOns.txt (enabled states). Links to any matching profiles in this repo.
+
+- Setup:
+  - Copy Scripts/python/config.example.json to Scripts/python/config.json and set paths for `wow_addons_dir` and `wow_addons_txt_path` (optional).
+  - Optionally set `profile_aliases` to map addon names to profile folder names for better matching.
+  - Or pass `--addons-dir` and `--addons-txt` on the command line.
+
+- Run (PowerShell):
+
+```powershell
+python .\Scripts\python\generate_addons_md.py --config .\Scripts\python\config.json --copy-addons-txt
+```
+
+- Output:
+  - Creates Addons.md in the repo root, formatted as a table with columns: Addon, Source, Profiles.
+  - Optionally copies AddOns.txt into Scripts/python for reference.
+### Options
+
+- `--workspace-root`: Set the repo root explicitly (use `.` when running from the root).
+- `--addons-dir`: Override the WoW AddOns directory.
+- `--addons-txt`: Provide AddOns.txt for enabled/disabled filtering.
+- `--output`: Set a custom output path for Addons.md.
+- `--copy-addons-txt`: Copy AddOns.txt into Scripts/python for reference.
+
+
+- Notes:
+  - CurseForge links are detected from `.toc` fields `X-Website` or `X-Curse-Project-Slug`. If missing, a CurseForge search link is provided.
+  - Enabled/disabled filtering only applies when `AddOns.txt` is provided; otherwise all discovered addons are listed.
+  - Profile matching uses addon `Title`, the addon folder name, punctuation-insensitive equality, and any `profile_aliases` entries. Fuzzy substring matches are avoided to keep similar addons (e.g., Plater vs Platynator) separate.
+  - The script prints an info line when no profile folder is found for an addon.
+  - The addon named "Edit Mode" is intentionally skipped.

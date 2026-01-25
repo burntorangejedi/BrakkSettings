@@ -1,0 +1,20 @@
+{
+  "wow_addons_dir": "C:/Program Files (x86)/World of Warcraft/_retail_/Interface/AddOns",
+  "wow_addons_txt_path": "C:/Program Files (x86)/World of Warcraft/_retail_/WTF/Account/YOUR_ACCOUNT/AddOns.txt",
+  "profile_aliases": {
+    "Better Blizzard Frames": ["Better Blizzard Frames"],
+    "Sensei Class Resource Bar": ["Sensei Class Resource Bar"],
+    "BigWigs": ["BigWigs"],
+    "Plater": ["Plater"],
+    "Platynator": ["Platynator"],
+    "Details": ["Details"],
+    "OmniCD": ["OmniCD"],
+    "Edit Mode": ["Edit Mode"],
+    "TipTac": ["TipTac"],
+    "Chattynator": ["Chattynator"],
+    "NephUI": ["NephUI"],
+    "Chonky Character Sheet": ["Chonky Character Sheet"],
+    "Cooldown Manager Center": ["Cooldown Manager Center"],
+    "Foe's catchy cast bar": ["Foe's Catchy Cast Bar"]
+  }
+}
