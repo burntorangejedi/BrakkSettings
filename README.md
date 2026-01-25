@@ -89,7 +89,7 @@ python .\Scripts\python\generate_addons_md.py --config .\Scripts\python\config.j
 ```
 
 - Output:
-  - Creates Addons.md in the repo root, formatted as a table with columns: Addon, Source, Profiles.
+  - Creates Addons.md in the repo root, formatted as a table with columns: Addon, Description, Source, Profiles.
   - Optionally copies AddOns.txt into Scripts/python for reference.
 ### Options
 

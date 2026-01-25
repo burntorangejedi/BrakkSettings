@@ -89,7 +89,8 @@ def parse_toc(toc_path: Path) -> Dict[str, str]:
             key = m.group(1).strip()
             val = m.group(2).strip()
             # Strip WoW color codes: |cffHHHHHH or |r
-            val = re.sub(r"\|c[a-fA-F0-9]{8}|\|r", "", val).strip()
+            # Strip WoW texture codes: |T<digits>:<digits>:<digits>:<digits>:<digits>|t
+            val = re.sub(r"\|c[a-fA-F0-9]{8}|\|r|\|T\d+:\d+:\d+:\d+:\d+\|t", "", val).strip()
             info[key] = val
     return info
 
@@ -120,6 +121,7 @@ def discover_addons(addons_dir: Path) -> List[Tuple[str, Path, Dict[str, str]]]:
             base = folder.split("_")[0]
             if base in folder_names:
                 # This is a variant; skip it
+                print(f"[filter] Skipping variant '{folder}' (base '{base}' exists)")
                 continue
         filtered.append((name, child, info))
     return filtered
@@ -226,8 +228,8 @@ def build_addons_md(
         return True
 
     # Table header
-    lines.append("| Addon | Source | Profiles |")
-    lines.append("|---|---|---|")
+    lines.append("| Addon | Description | Source | Profiles |")
+    lines.append("|---|---|---|---|")
 
     # Sort by name for stability
     for name, folder, info in sorted(addons, key=lambda t: t[0].lower()):
@@ -236,6 +238,7 @@ def build_addons_md(
         # Permanently skip non-addon "Edit Mode"
         if _normalize(name) == "editmode" or _normalize(folder.name) == "editmode":
             continue
+        description = info.get("Notes") or ""
         url = curseforge_url_from_toc(info, name)
         profiles = find_profiles_links(workspace_root, name, folder.name, aliases)
         if not profiles:
@@ -243,7 +246,7 @@ def build_addons_md(
         # URL-encode spaces in profile paths for markdown links
         profiles_cell = "; ".join([f"[{p}]({p.replace(' ', '%20')})" for p in profiles]).rstrip("; ") if profiles else "none"
         # Row
-        lines.append(f"| {name} | {url} | {profiles_cell} |")
+        lines.append(f"| {name} | {description} | {url} | {profiles_cell} |")
     return "\n".join(lines).rstrip() + "\n"
 
 
