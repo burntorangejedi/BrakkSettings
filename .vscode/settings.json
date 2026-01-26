@@ -17,6 +17,7 @@
     "Lua.diagnostics.globals": [
         "GAMEMENU_OPTIONS",
         "FONT_SIZE",
-        "APPLY"
+        "APPLY",
+        "SlashCmdList"
     ]
 }
