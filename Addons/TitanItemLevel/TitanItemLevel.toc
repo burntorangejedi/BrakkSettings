@@ -1,0 +1,9 @@
+## Interface: 120000
+## Title: Titan Item Level
+## Author: BurntOrangeJedi
+## Notes: Displays your current item level on Titan Panel
+## Version: 1.0
+## SavedVariables: TitanItemLevelDB
+## Dependencies: Titan
+
+TitanItemLevel.lua
