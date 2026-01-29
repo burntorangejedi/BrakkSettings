@@ -1,2 +1,0 @@
-/run EditModeManagerFrame:SelectLayout("Laptop-ToxiUI-Vertical")
-/ec profile ToxiUI-Vertical
