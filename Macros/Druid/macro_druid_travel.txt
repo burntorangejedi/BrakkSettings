@@ -1,0 +1,3 @@
+/cancelform [flying]
+/dismount [mounted]
+/cast [swimming,nomod][nomod,outdoors] Travel Form; [indoors] Cat Form
