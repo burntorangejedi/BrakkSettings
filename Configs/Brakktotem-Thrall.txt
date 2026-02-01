@@ -1,0 +1,59 @@
+Auctionator
+Baganator
+Better Fishing
+BigWigs
+BigWigs - <all expansions>
+BtW Quests
+Bug Grabber
+Bug Sack
+Bwansamdi Death Quotes
+Chattynator
+Cooldown Manager Centered
+DandersFrames
+Decor Treasure Hunt
+Delve Companion
+Details! Damage Meter
+Dialog UI
+Elvui
+Toxi UI
+Wind Tools
+Enhance QoL
+Enhance QoL - Shared Media
+FarmHud
+Great Vault Key Info
+Guild Roster Manager
+Handy Notes
+Handy Notes - Map Notes
+Handy Notes - <all expansions>
+Item Upgrade Quality Icons
+Journalator
+Kaliel's Tracker
+Macro Toolkit
+MaxDps
+MaxDps - <all classes>
+Missing Class Buff
+Narcissus
+Northern Sky Raid Tools
+Opie
+Pawn 
+Platynator
+    - Jundies's profile
+Plumber
+Profession Shopping List
+No Mats; No Make
+Raider.IO
+Rare Scanner
+Shared Media
+Simple Addon Manager
+Simulationcraft
+SpecBisTooltip by D4KiR
+Stat Priority
+Syndicator
+Talent Tree Tweaks 
+TomTom
+Twintop's Resource Bar
+VaultButton
+WarpDeplete
+Watchtower
+WaypointUI
+Wildu_SharedMedia
