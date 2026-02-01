@@ -15,10 +15,10 @@ Delve Companion
 Details! Damage Meter
 Dialog UI
 Elvui
-Toxi UI
-Wind Tools
+    = Toxi UI - ElvUI Edit
+    = ElvUI Wind Tools
 Enhance QoL
-Enhance QoL - Shared Media
+    = comes with ENhance QoL - Shared Media
 FarmHud
 Great Vault Key Info
 Guild Roster Manager
@@ -28,7 +28,8 @@ Handy Notes - <all expansions>
 Item Upgrade Quality Icons
 Journalator
 Kaliel's Tracker
-Macro Toolkit
+MacroToolkit
+    = comes with MacroToolkitIcons
 MaxDps
 MaxDps - <all classes>
 Missing Class Buff
@@ -37,7 +38,7 @@ Northern Sky Raid Tools
 Opie
 Pawn 
 Platynator
-    - Jundies's profile
+    = Jundies's Platynator profile
 Plumber
 Profession Shopping List
 No Mats; No Make
@@ -56,4 +57,5 @@ VaultButton
 WarpDeplete
 Watchtower
 WaypointUI
+WeakAuras_SharedMedia
 Wildu_SharedMedia
