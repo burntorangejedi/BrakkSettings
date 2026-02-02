@@ -1,8 +1,6 @@
 Auctionator
 Baganator
 Better Fishing
-BigWigs
-BigWigs - <all expansions>
 BtW Quests
 Bug Grabber
 Bug Sack
@@ -11,7 +9,6 @@ Chattynator
 Cooldown Manager Centered
 DandersFrames
 Decor Treasure Hunt
-Delve Companion
 Details! Damage Meter
 Dialog UI
 Elvui
@@ -26,6 +23,7 @@ Handy Notes
 Handy Notes - Map Notes
 Handy Notes - <all expansions>
 Item Upgrade Quality Icons
+ItemEra 
 Journalator
 Kaliel's Tracker
 MacroToolkit
