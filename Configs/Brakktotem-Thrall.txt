@@ -9,6 +9,7 @@ Chattynator
 Cooldown Manager Centered
 DandersFrames
 Decor Treasure Hunt
+DelveBuddy
 Details! Damage Meter
 Dialog UI
 Elvui
