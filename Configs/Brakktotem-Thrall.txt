@@ -33,6 +33,7 @@ MaxDps
 MaxDps - <all classes>
 Missing Class Buff
 Narcissus
+No Mats; No Make
 Northern Sky Raid Tools
 Opie
 Pawn 
@@ -41,7 +42,6 @@ Platynator
 Plumber
 Premade Groups Filter
 Profession Shopping List
-No Mats; No Make
 Raider.IO
 Rare Scanner
 Shared Media
@@ -59,3 +59,4 @@ Watchtower
 WaypointUI
 WeakAuras_SharedMedia
 Wildu_SharedMedia
+ZamestoTV: Delves Helper 
