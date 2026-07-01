@@ -18,7 +18,13 @@
         "GAMEMENU_OPTIONS",
         "FONT_SIZE",
         "APPLY",
-        "SlashCmdList"
+        "SlashCmdList",
+        "UNKNOWN",
+        "WeeklyRewardsFrame",
+        "STANDARD_TEXT_FONT",
+        "CANCEL",
+        "OKAY",
+        "ACCEPT"
     ],
     "Lua.type.weakUnionCheck": true
 }
