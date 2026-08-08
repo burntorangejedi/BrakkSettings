@@ -4,6 +4,8 @@ import os
 from pathlib import Path
 import re
 from typing import Dict, List, Optional, Tuple
+from urllib.parse import quote_plus
+from zipfile import ZipFile
 
 
 def load_config(config_path: Optional[Path]) -> Dict[str, object]:
@@ -95,6 +97,40 @@ def parse_toc(toc_path: Path) -> Dict[str, str]:
     return info
 
 
+def slugify(value: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
+    return slug or "addon"
+
+
+def infer_addon_family(title: str, folder_name: str) -> Optional[str]:
+    text = f"{title} {folder_name}".strip()
+    lowered = text.lower()
+
+    family_map = {
+        "dbm": "DBM",
+        "ellesmereui": "EllesmereUI",
+        "enhance qol": "Enhance QoL",
+        "elvui": "ElvUI",
+        "bigwigs": "BigWigs",
+        "opie": "OPie",
+        "details": "Details",
+        "weakauras": "WeakAuras",
+        "ace3": "Ace3",
+    }
+    for family, display_name in family_map.items():
+        if family in lowered:
+            return display_name
+
+    # Generic fallback: if the title/folder has a common prefix with a separator, use that.
+    tokens = re.split(r"[^a-z0-9]+", lowered)
+    if len(tokens) >= 2:
+        candidate = tokens[0]
+        if candidate in {"dbm", "elvui", "ellesmereui", "enhance", "bigwigs", "opie", "details", "weakauras"}:
+            return family_map.get(candidate, candidate.title())
+
+    return None
+
+
 def discover_addons(addons_dir: Path) -> List[Tuple[str, Path, Dict[str, str]]]:
     results: List[Tuple[str, Path, Dict[str, str]]] = []
     if not addons_dir.exists():
@@ -110,7 +146,7 @@ def discover_addons(addons_dir: Path) -> List[Tuple[str, Path, Dict[str, str]]]:
         if not re.search(r"[a-zA-Z0-9]", name):
             continue
         results.append((name, child, info))
-    
+
     # Filter: remove addon variants (e.g., ElvUI_Config when ElvUI exists)
     # Keep only addons that are not X_Y if X alone also exists
     folder_names = {child.name for _, child, _ in results}
@@ -124,7 +160,26 @@ def discover_addons(addons_dir: Path) -> List[Tuple[str, Path, Dict[str, str]]]:
                 print(f"[filter] Skipping variant '{folder}' (base '{base}' exists)")
                 continue
         filtered.append((name, child, info))
-    return filtered
+
+    grouped: List[Tuple[str, Path, Dict[str, str]]] = []
+    by_family: Dict[str, List[Tuple[str, Path, Dict[str, str]]]] = {}
+    for entry in filtered:
+        family = infer_addon_family(entry[0], entry[1].name)
+        if family:
+            by_family.setdefault(family, []).append(entry)
+        else:
+            grouped.append(entry)
+
+    for family, entries in sorted(by_family.items()):
+        # Choose the best representative entry for the family: prefer one with a richer/cleaner title.
+        representative = sorted(entries, key=lambda item: (
+            0 if "main" in item[0].lower() or "core" in item[0].lower() else 1,
+            item[0].lower(),
+        ))[0]
+        grouped.append((family, representative[1], representative[2]))
+
+    grouped.sort(key=lambda item: item[0].lower())
+    return grouped
 
 
 def curseforge_url_from_toc(info: Dict[str, str], fallback_name: str) -> str:
@@ -134,8 +189,9 @@ def curseforge_url_from_toc(info: Dict[str, str], fallback_name: str) -> str:
     slug = info.get("X-Curse-Project-Slug")
     if slug:
         return f"https://www.curseforge.com/wow/addons/{slug}"
-    # As a fallback, provide a search link
-    return f"https://www.curseforge.com/wow/addons/search?search={re.sub(r'\s+', '+', fallback_name.strip())}"
+    query = re.sub(r"\s+", " ", fallback_name.strip())
+    encoded_query = quote_plus(query, safe="")
+    return f"https://www.curseforge.com/wow/addons/search?search={encoded_query}"
 
 
 def _normalize(s: str) -> str:
@@ -204,6 +260,24 @@ def find_profiles_links(
     return links
 
 
+def build_profile_archive(workspace_root: Path, addon_name: str, profile_paths: List[str]) -> Optional[str]:
+    if not profile_paths:
+        return None
+
+    archive_dir = workspace_root / "Downloads" / "Profiles"
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    archive_path = archive_dir / f"{slugify(addon_name)}.zip"
+
+    with ZipFile(archive_path, "w") as zf:
+        for rel_path in profile_paths:
+            source_path = workspace_root / rel_path
+            if not source_path.exists():
+                continue
+            zf.write(source_path, arcname=rel_path)
+
+    return archive_path.relative_to(workspace_root).as_posix()
+
+
 def build_addons_md(
     workspace_root: Path,
     addons: List[Tuple[str, Path, Dict[str, str]]],
@@ -241,10 +315,16 @@ def build_addons_md(
         description = info.get("Notes") or ""
         url = curseforge_url_from_toc(info, name)
         profiles = find_profiles_links(workspace_root, name, folder.name, aliases)
+        archive_link = None
+        if profiles:
+            archive_link = build_profile_archive(workspace_root, name, profiles)
         if not profiles:
             print(f"[info] No profiles found for addon '{name}' (folder '{folder.name}')")
-        # URL-encode spaces in profile paths for markdown links
-        profiles_cell = "; ".join([f"[{p}]({p.replace(' ', '%20')})" for p in profiles]).rstrip("; ") if profiles else "none"
+
+        profile_links = [f"[{p}]({p.replace(' ', '%20')})" for p in profiles]
+        if archive_link:
+            profile_links.append(f"[download zip]({archive_link.replace(' ', '%20')})")
+        profiles_cell = "; ".join(profile_links).rstrip("; ") if profile_links else "none"
         # Row
         lines.append(f"| {name} | {description} | {url} | {profiles_cell} |")
     return "\n".join(lines).rstrip() + "\n"
